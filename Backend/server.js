@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs")
 const session = require("express-session")
 const app = express()
 const User = require("./user");
+const Project = require("./project");
 //---------END OF IMPORTS-------------------------------------------------
 mongoose.connect(
     "mongodb://localhost:27017/TestDB",
@@ -79,6 +80,53 @@ app.get("/user", (req, res) => {
     console.log(req.isAuthenticated())
     console.log(req.user);
 });
+app.get("/logout", function (req, res) {
+    req.logout();
+    res.send("Successfully Logged out")
+})
+
+app.post("/projects", async function (req, res) {
+    if (req.isAuthenticated()) {
+        const newProject = new Project({
+            projectName: req.body.name,
+            users: [req.user.username]
+        })
+        await newProject.save()
+        User.findByIdAndUpdate(req.user.id, { $push: { projects: req.body.name } }, function (err, doc) {
+            if (err) { throw err } else { console.log(doc) }
+        })
+        res.send("Success")
+    } else {
+        res.send("Please Log In")
+    }
+})
+
+app.get("/projects/:prjNm", function (req, res) {
+    const projName = req.params.prjNm
+    console.log(projName)
+    if (req.isAuthenticated()) {
+        console.log(projName)
+        Project.findOne({ projectName: projName }, function (err, doc) {
+            if (err) {
+                console.log(err)
+            }
+            else if (!doc) {
+                res.send("Project does not exist")
+            }
+            else {
+                console.log(doc.users)
+                if (doc.users.includes(req.user.username)) {
+                    res.send(doc);
+                } else {
+                    res.send("You don't have the access to this project")
+                }
+            }
+        })
+    }
+    else {
+        res.send("Please Log In")
+    }
+})
 
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
