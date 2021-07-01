@@ -101,6 +101,37 @@ app.post("/projects", async function (req, res) {
     }
 })
 
+app.post("/projects/:prjNm/addUsers", function (req, res) {
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (err) {
+                throw err
+            } else {
+                if (doc.users.includes(req.user.username)) {
+                    req.body.users.forEach(user => {
+                        if (!doc.users.includes(user)) {
+                            doc.users.push(user)
+                        }
+                    });
+                    doc.save()
+                } else {
+                    res.send("You can't add users to this project as you are not part of the project")
+                }
+            }
+        })
+        req.body.users.forEach(user => {
+            User.findOne({username:user},function(err,doc){
+                if(!doc.projects.includes(req.params.prjNm)){
+                    doc.projects.push(req.params.prjNm)
+                }
+                doc.save()
+            })
+        });
+    } else {
+        res.send("Please Log In")
+    }
+})
+
 app.get("/projects/:prjNm", function (req, res) {
     const projName = req.params.prjNm
     console.log(projName)
