@@ -3,7 +3,7 @@
 - [x] Add a project
 - [x] Add users to the project
 - [x] Add ToDos to the project
-- [ ] Keep track of completed/not-completed ToDos
+- [x] Mark ToDos as completed/not-completed
 - [ ] Remove ToDos from the project
 - [ ] Remove a project
 - [ ] Remove users from the project

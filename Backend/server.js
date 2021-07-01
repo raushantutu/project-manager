@@ -95,7 +95,7 @@ app.post("/projects", async function (req, res) {
         const newProject = new Project({
             projectName: req.body.name,
             users: [req.user.username],
-            todos:[]
+            todos: []
         })
         await newProject.save()
         User.findByIdAndUpdate(req.user.id, { $push: { projects: req.body.name } }, function (err, doc) {
@@ -142,31 +142,58 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
     }
 })
 
-app.post("/projects/:prjNm/addToDos",function(req,res){
-  if(req.isAuthenticated()){
-    Project.findOne({projectName: req.params.prjNm},function(err,doc){
-        if(err){
-            throw err
-        }else if(doc){
-            if (doc.users.includes(req.user.username)){
-                var todo = {
-                    content:req.body.content,
-                    completed:false,
-                    addedBy:req.user.username
+app.post("/projects/:prjNm/addToDos", function (req, res) {
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (err) {
+                throw err
+            } else if (doc) {
+                if (doc.users.includes(req.user.username)) {
+                    var todo = {
+                        content: req.body.content,
+                        completed: false,
+                        addedBy: req.user.username
+                    }
+                    doc.todos.push(todo);
+                    doc.save();
+                    res.send("ToDo successfully added")
+                } else {
+                    res.send("You are not part of the project")
                 }
-                doc.todos.push(todo);
-                doc.save();
-                res.send("ToDo successfully added")
-            }else{
-                res.send("You are not part of the project")
+            } else {
+                res.send("No such project is available")
             }
-        }else{
-            res.send("No such project is available")
-        }
-    })
-  }else{
-      res.send("Please Log In")
-  }
+        })
+    } else {
+        res.send("Please Log In")
+    }
+})
+
+app.get("/projects/:prjNm/toDo/:todoName", function (req, res) {
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (err) {
+                throw err
+            } else if (doc) {
+                if (doc.users.includes(req.user.username)) {
+                    doc.todos.forEach(edit => {
+                        if(edit.content===req.params.todoName){
+                            edit.completed= !edit.completed
+                            console.log(edit)
+                            doc.save()
+                        }
+                    });
+                    res.send("ToDo successfully edited")
+                } else {
+                    res.send("You are not part of the project")
+                }
+            } else {
+                res.send("No such project is available")
+            }
+        })
+    } else {
+        res.send("Please Log In")
+    }
 })
 
 app.get("/projects/:prjNm", function (req, res) {
