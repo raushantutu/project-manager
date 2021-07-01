@@ -1,3 +1,4 @@
+/* #region  Imports */
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -9,7 +10,8 @@ const session = require("express-session")
 const app = express()
 const User = require("./user");
 const Project = require("./project");
-//---------END OF IMPORTS-------------------------------------------------
+/* #endregion */
+/* #region  Middlewares */
 mongoose.connect(
     "mongodb://localhost:27017/TestDB",
     {
@@ -44,7 +46,8 @@ require("./passportConfig")(passport);
 
 //-------------END OF MIDDLEWARE------------------------------------------
 
-//------------------ROUTES------------------------------------------------
+/* #endregion */
+/* #region  Basic authentication routes */
 
 app.post("/login", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
@@ -85,11 +88,14 @@ app.get("/logout", function (req, res) {
     res.send("Successfully Logged out")
 })
 
+/* #endregion */
+
 app.post("/projects", async function (req, res) {
     if (req.isAuthenticated()) {
         const newProject = new Project({
             projectName: req.body.name,
-            users: [req.user.username]
+            users: [req.user.username],
+            todos:[]
         })
         await newProject.save()
         User.findByIdAndUpdate(req.user.id, { $push: { projects: req.body.name } }, function (err, doc) {
@@ -120,12 +126,12 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
             }
         })
         req.body.users.forEach(user => {
-            User.findOne({username:user},function(err,doc){
-                if(err){throw err}
-                else if(!doc){
-                    console.log(user+" is not a valid user/username")
+            User.findOne({ username: user }, function (err, doc) {
+                if (err) { throw err }
+                else if (!doc) {
+                    console.log(user + " is not a valid user/username")
                 }
-                else if(!doc.projects.includes(req.params.prjNm)){
+                else if (!doc.projects.includes(req.params.prjNm)) {
                     doc.projects.push(req.params.prjNm)
                     doc.save()
                 }
@@ -134,6 +140,33 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
     } else {
         res.send("Please Log In")
     }
+})
+
+app.post("/projects/:prjNm/addToDos",function(req,res){
+  if(req.isAuthenticated()){
+    Project.findOne({projectName: req.params.prjNm},function(err,doc){
+        if(err){
+            throw err
+        }else if(doc){
+            if (doc.users.includes(req.user.username)){
+                var todo = {
+                    content:req.body.content,
+                    completed:false,
+                    addedBy:req.user.username
+                }
+                doc.todos.push(todo);
+                doc.save();
+                res.send("ToDo successfully added")
+            }else{
+                res.send("You are not part of the project")
+            }
+        }else{
+            res.send("No such project is available")
+        }
+    })
+  }else{
+      res.send("Please Log In")
+  }
 })
 
 app.get("/projects/:prjNm", function (req, res) {
@@ -163,7 +196,6 @@ app.get("/projects/:prjNm", function (req, res) {
     }
 })
 
-//----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
 app.listen(4000, function () {
     console.log("Server started on port 3000.")
