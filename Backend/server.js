@@ -121,10 +121,14 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
         })
         req.body.users.forEach(user => {
             User.findOne({username:user},function(err,doc){
-                if(!doc.projects.includes(req.params.prjNm)){
-                    doc.projects.push(req.params.prjNm)
+                if(err){throw err}
+                else if(!doc){
+                    console.log(user+" is not a valid user/username")
                 }
-                doc.save()
+                else if(!doc.projects.includes(req.params.prjNm)){
+                    doc.projects.push(req.params.prjNm)
+                    doc.save()
+                }
             })
         });
     } else {
