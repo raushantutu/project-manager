@@ -3,9 +3,13 @@
 # **Commit 7**
 
 ### Changes/Edits
-#### FrontEnd Changes/Edits
+- #### FrontEnd Changes/Edits
 1. Started working on frontend.
-#### Backend Changes/Edits
+2. Added login page which opens when you are not logged in.
+3. When logged in, Projects page is opened on the homepage. This page shows a list of projects that the user is currenly a part of.
+
+
+- #### Backend Changes/Edits
 1. GET on '/projects' returns an array of all the projects you are part of.
 2. GET on '/isLoggedIn' returns 1 if you are logged in and 0 if you are not.
 
@@ -19,7 +23,7 @@
 <hr style="border:2px solid gray"></hr>
 <br/>
 
-# **Commit 7**
+# **Commit 6**
 
 ### Changes
 1. Can edit the completed status of any todo now (that u r authorised to)
