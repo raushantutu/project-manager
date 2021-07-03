@@ -5,7 +5,7 @@ const project = new mongoose.Schema({
   todos: [{
     content: String,
     completed: Boolean,
-    addedBy:String
+    addedBy: String
   }]
 });
 

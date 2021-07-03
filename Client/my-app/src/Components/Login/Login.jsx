@@ -15,21 +15,21 @@ export default function Login(props) {
       url: "http://localhost:4000/login",
     }).then((res) => {
       console.log(res);
-      const checkAuthentication = ()=>{
+      const checkAuthentication = () => {
         Axios({
           method: "GET",
           withCredentials: true,
           url: "http://localhost:4000/isLoggedIn",
         }).then((res) => {
-          console.log(res.data)
-          if(!res.data){
-            props.handleSubmit(false)
-          }else{
-            props.handleSubmit(true)
+          console.log(res.data);
+          if (!res.data) {
+            props.handleSubmit(false);
+          } else {
+            props.handleSubmit(true);
           }
         });
-      }
-      checkAuthentication()
+      };
+      checkAuthentication();
     });
   };
   return (

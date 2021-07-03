@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 export default function Projects() {
   const [projectList, setProjectList] = useState([23, 34]);
   const [times, setTimes] = useState(0);
@@ -13,14 +14,21 @@ export default function Projects() {
       console.log(res.data, "data");
       const datatt = res.data;
       setProjectList((prev) => {
-        var varArray = datatt.map((projectName)=>{return <li>{projectName}</li>});
+        var varArray = datatt.map((projectName) => {
+          const str = "/project/" + projectName;
+          return (
+            <li>
+              <Link to={str}>{projectName}</Link>
+            </li>
+          );
+        });
         console.log(varArray, res.data);
         return varArray;
       });
       console.log(projectList, "projecList");
     });
   };
-  if (times == 0) {
+  if (times === 0) {
     getProjList();
     setTimes(1);
   }
