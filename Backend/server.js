@@ -107,6 +107,18 @@ app.post("/projects", async function (req, res) {
     }
 })
 
+app.get("/projects", function (req, res) {
+    User.findOne({ username: req.user.username }, (err, doc) => {
+        if (err) {
+            throw err;
+        } else if (!doc) {
+            res.send("username doesn't exist")
+        } else {
+            res.send(doc.projects)
+        }
+    })
+})
+
 app.post("/projects/:prjNm/addUsers", function (req, res) {
     if (req.isAuthenticated()) {
         Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
@@ -177,8 +189,8 @@ app.get("/projects/:prjNm/toDo/:todoName", function (req, res) {
             } else if (doc) {
                 if (doc.users.includes(req.user.username)) {
                     doc.todos.forEach(edit => {
-                        if(edit.content===req.params.todoName){
-                            edit.completed= !edit.completed
+                        if (edit.content === req.params.todoName) {
+                            edit.completed = !edit.completed
                             console.log(edit)
                             doc.save()
                         }
@@ -220,6 +232,14 @@ app.get("/projects/:prjNm", function (req, res) {
     }
     else {
         res.send("Please Log In")
+    }
+})
+
+app.get("/isLoggedIn", function (req, res) {
+    if (req.isAuthenticated()) {
+        res.send("1")
+    } else {
+        res.send("0")
     }
 })
 

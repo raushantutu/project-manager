@@ -1,6 +1,25 @@
 <hr style="border:2px solid gray"></hr>
 
-# **Commit 6**
+# **Commit 7**
+
+### Changes/Edits
+#### FrontEnd Changes/Edits
+1. Started working on frontend.
+#### Backend Changes/Edits
+1. GET on '/projects' returns an array of all the projects you are part of.
+2. GET on '/isLoggedIn' returns 1 if you are logged in and 0 if you are not.
+
+### Current errors
+
+- [ ] Invalid users are also being added to projects collection
+
+## Commit 7 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
+# **Commit 7**
 
 ### Changes
 1. Can edit the completed status of any todo now (that u r authorised to)
