@@ -1,5 +1,30 @@
 <hr style="border:2px solid gray"></hr>
 
+# **Commit 9**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Each todo shows up as a button
+2. If the text in the button is striked, it means that the todo is marked as completed
+3. On clicking the button, the completed status of the specific todo changes
+
+- #### Backend Changes/Edits
+
+1. None whatsoever
+
+### Current errors
+
+- [ ] Invalid users are also being added to projects collection
+- [ ] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together)
+
+## Commit 9 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
 # **Commit 8**
 
 ### Non-Functional Changes

@@ -4,8 +4,6 @@
 
 - [ ] Add project button
 - [ ] Add todo button
-- [x] Show if a todo is completed or not
-- [ ]
 
 ### BACKEND
 
@@ -25,7 +23,7 @@
 - [x] Each project has its own page
 - [x] When a project page is opened, Todo list must appear
 - [ ] Add todo button
-- [ ] Clicking on a ToDo must change its completed property in mongoDB
+- [x] Clicking on a ToDo must change its completed property in mongoDB
 - [ ] Each page should check if the user is authenticated before showing anything
 
 # Bugs
