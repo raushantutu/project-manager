@@ -14,35 +14,25 @@ export default function Todo(props) {
       url: str,
     }).then((res) => {
       console.log(res.data);
+      props.dontReload();
     });
-    window.location.reload(false);
   };
-  console.log(props.data);
+  // console.log(props.data);
   const listItems = props.data.map((indItem) => {
-    if (!indItem.completed) {
-      return (
-        <li>
-          <button value={indItem.content} onClick={handleClick}>
-            {indItem.content}
-          </button>
-        </li>
-      );
-    } else {
-      return (
-        <li>
-          <button
-            style={{
-              textDecorationLine: "line-through",
-              textDecorationStyle: "solid",
-            }}
-            value={indItem.content}
-            onClick={handleClick}
-          >
-            {indItem.content}
-          </button>
-        </li>
-      );
-    }
+    return (
+      <li>
+        <button
+          value={indItem.content}
+          style={{
+            textDecorationLine: indItem.completed ? "line-through" : "none",
+            textDecorationStyle: "solid",
+          }}
+          onClick={handleClick}
+        >
+          {indItem.content}
+        </button>
+      </li>
+    );
   });
   return (
     <div>

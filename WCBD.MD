@@ -24,11 +24,12 @@
 - [x] When a project page is opened, Todo list must appear
 - [x] Add todo button
 - [x] Clicking on a ToDo must change its completed property in mongoDB
-- [ ] Each page should check if the user is authenticated before showing anything
+- [x] Add Users button
+- [ ] Add logout button
 
 ### MIGHT ADD LATER ON
-- [ ] Set and show priorities of project
-- [ ] Current project
+- [ ] Set and show priorities of project (Can use tag)
+- [ ] Mark the Current project with a tag 
 - [ ] Completion tag for every project
 
 # Bugs

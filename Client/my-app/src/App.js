@@ -4,10 +4,8 @@ import Axios from 'axios'
 import Projects from './Components/Projects/Projects'
 import Project from './Components/Project/Project'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 export default function App() {

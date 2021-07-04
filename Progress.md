@@ -1,5 +1,31 @@
 <hr style="border:2px solid gray"></hr>
 
+# **Commit 11**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Fixed a reloading error
+2. Now you can add users too (typing a username that is not in the database still  adds that username to the project users list [#Bug]())
+
+- #### Backend Changes/Edits
+
+1. None whatsoever
+
+### Current errors
+
+- [ ] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 11 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
 # **Commit 10**
 
 ### Changes/Edits

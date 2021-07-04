@@ -149,6 +149,7 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
                 }
             })
         });
+        res.send("something")
     } else {
         res.send("Please Log In")
     }

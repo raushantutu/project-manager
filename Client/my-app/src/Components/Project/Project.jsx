@@ -7,8 +7,28 @@ export default function Project() {
   const [todo, setTodo] = useState([]);
   const [times, setTimes] = useState(0);
   const [newTodo, setNewTodo] = useState("");
+  const [newUser, setnewUser] = useState("");
   const { prjName } = useParams();
-  console.log(123);
+
+  const addUser = () => {
+    const str = "http://localhost:4000/projects/" + prjName + "/addUsers";
+    const data = {
+      users: []
+    };
+    data.users.push(newUser)
+    console.log(data);
+    Axios({
+      method: "POST",
+      withCredentials: true,
+      data: data,
+      url: str,
+    }).then((res) => {
+      console.log(res.data,1111);
+      // window.location.reload(false);
+      projRetrieve();
+      setnewUser("");
+    });
+  };
 
   const sendTodo = () => {
     const str = "http://localhost:4000/projects/" + prjName + "/addTodos";
@@ -24,6 +44,7 @@ export default function Project() {
       console.log(res.data);
       // window.location.reload(false);
       projRetrieve();
+      setNewTodo("");
     });
   };
 
@@ -52,6 +73,14 @@ export default function Project() {
     <div>
       <h3>Team member for this project</h3>
       {userList}
+      <input
+        value={newUser}
+        type="text"
+        onChange={(e) => {
+          setnewUser(e.target.value);
+        }}
+      />
+      <button onClick={addUser}>Add User</button>
       <br />
       <h3>ToDos of the projects</h3>
       <Todo data={todo} dontReload={projRetrieve} />
