@@ -238,7 +238,7 @@ app.get("/projects/:prjNm", function (req, res) {
 
 app.get("/isLoggedIn", function (req, res) {
     if (req.isAuthenticated()) {
-        res.send("1")
+        res.send(req.user)
     } else {
         res.send("0")
     }

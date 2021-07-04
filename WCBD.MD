@@ -17,6 +17,7 @@
 
 ### FRONTEND
 
+- [ ] Add a sign up page [#Important]()
 - [x] Login/Logout/Register strip on top
 - [x] When logged-in, show all projects
 - [x] Add project button
@@ -25,7 +26,7 @@
 - [x] Add todo button
 - [x] Clicking on a ToDo must change its completed property in mongoDB
 - [x] Add Users button
-- [ ] Add logout button
+- [x] Add logout button
 
 ### MIGHT ADD LATER ON
 - [ ] Set and show priorities of project (Can use tag)

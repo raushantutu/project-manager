@@ -7,9 +7,10 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-
+import NavBar from './Components/NavBar/NavBar'
 export default function App() {
   const [authenticated, setauthenticated] = useState(false)
+  const [username, setUsername] = useState("")
   const checkAuthentication = () => {
     Axios({
       method: "GET",
@@ -21,6 +22,7 @@ export default function App() {
         setauthenticated(false)
       } else {
         setauthenticated(true)
+        setUsername(res.data.username)
       }
     });
   }
@@ -31,6 +33,7 @@ export default function App() {
     </div>
   } else {
     return <div>
+      <NavBar logout={setauthenticated} username={username} />
       <Switch>
         <Route path="/" exact>
           <Projects />
