@@ -1,14 +1,14 @@
 <hr style="border:2px solid gray"></hr>
 
-# **Commit 9**
+# **Commit 10**
 
 ### Changes/Edits
 
 - #### FrontEnd Changes/Edits
 
-1. Each todo shows up as a button
-2. If the text in the button is striked, it means that the todo is marked as completed
-3. On clicking the button, the completed status of the specific todo changes
+1. You can now add projects to your account
+2. You can now add todos to the project
+3. Adding projects doesn't reload the webpage. Niether does adding a new todo.
 
 - #### Backend Changes/Edits
 
@@ -17,7 +17,34 @@
 ### Current errors
 
 - [ ] Invalid users are also being added to projects collection
-- [ ] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together)
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together)
+- [ ] When marking a todo item as completed/not-completed, the page is reloading to show the changes.
+
+## Commit 10 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
+
+# **Commit 9**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Each todo shows up as a button
+2. If the text in the button is striked, it means that the todo is marked as completed
+3. On clicking the button, the completed status of the specific todo changes. But this reloads the page.
+
+- #### Backend Changes/Edits
+
+1. None whatsoever
+
+### Current errors
+
+- [ ] Invalid users are also being added to projects collection
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together)
 
 ## Commit 9 end
 

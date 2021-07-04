@@ -4,7 +4,24 @@ import { Link } from "react-router-dom";
 export default function Projects() {
   const [projectList, setProjectList] = useState([23, 34]);
   const [times, setTimes] = useState(0);
-
+  const [newProjectName, setNewProjectName] = useState("");
+  const handleClick = () => {
+    const data = {
+      name: newProjectName,
+    };
+    Axios({
+      method: "POST",
+      data: data,
+      withCredentials: true,
+      url: "http://localhost:4000/projects",
+    }).then((res) => {
+      console.log(res.data);
+      if (res.data === "Success") {
+        getProjList();
+        setNewProjectName("");
+      }
+    });
+  };
   const getProjList = async () => {
     Axios({
       method: "GET",
@@ -34,7 +51,18 @@ export default function Projects() {
   }
   return (
     <div>
+      <h3>
+        All of your projects: <br />
+      </h3>
       <ul>{projectList}</ul>
+      <input
+        type="text"
+        value={newProjectName}
+        onChange={(e) => {
+          setNewProjectName(e.target.value);
+        }}
+      />
+      <button onClick={handleClick}>Add This Project</button>
     </div>
   );
 }

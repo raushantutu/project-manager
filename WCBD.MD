@@ -2,8 +2,8 @@
 
 ### ToDo
 
-- [ ] Add project button
-- [ ] Add todo button
+- [x] Add project button
+- [x] Add todo button
 
 ### BACKEND
 
@@ -19,12 +19,17 @@
 
 - [x] Login/Logout/Register strip on top
 - [x] When logged-in, show all projects
-- [ ] Add project button
+- [x] Add project button
 - [x] Each project has its own page
 - [x] When a project page is opened, Todo list must appear
-- [ ] Add todo button
+- [x] Add todo button
 - [x] Clicking on a ToDo must change its completed property in mongoDB
 - [ ] Each page should check if the user is authenticated before showing anything
+
+### MIGHT ADD LATER ON
+- [ ] Set and show priorities of project
+- [ ] Current project
+- [ ] Completion tag for every project
 
 # Bugs
 
