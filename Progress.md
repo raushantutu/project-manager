@@ -1,5 +1,33 @@
 <hr style="border:2px solid gray"></hr>
 
+
+
+# **Commit 13**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. None whatsoever
+
+- #### Backend Changes/Edits
+
+1. Fixed a bug. You can only add an existing (in DB) user to a project.
+2. You can sign up now
+
+### Current errors
+
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 13 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
 # **Commit 12**
 
 ### Changes/Edits
@@ -14,7 +42,7 @@
 
 ### Current errors
 
-- [ ] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
 - [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
 - [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
 - [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()

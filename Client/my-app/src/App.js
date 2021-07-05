@@ -3,6 +3,7 @@ import Login from './Components/Login/Login'
 import Axios from 'axios'
 import Projects from './Components/Projects/Projects'
 import Project from './Components/Project/Project'
+import SignUp from './Components/SignUp/SignUp'
 import {
   Switch,
   Route
@@ -29,7 +30,10 @@ export default function App() {
   checkAuthentication()
   if (!authenticated) {
     return <div>
+      <h3>Login:</h3>
       <Login handleSubmit={setauthenticated} />
+      <h3>Sign up:  </h3>
+      <SignUp />
     </div>
   } else {
     return <div>
@@ -40,9 +44,6 @@ export default function App() {
         </Route>
         <Route path="/project/:prjName">
           <Project />
-        </Route>
-        <Route path="/todo">
-          <Projects />
         </Route>
       </Switch>
     </div>

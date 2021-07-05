@@ -17,7 +17,10 @@
 
 ### FRONTEND
 
-- [ ] Add a sign up page [#Important]()
+- [x] Add a sign up page [#Important]()
+- [ ] Remove todo button
+- [ ] Remove Project button
+- [ ] Remove User Button
 - [x] Login/Logout/Register strip on top
 - [x] When logged-in, show all projects
 - [x] Add project button
@@ -35,4 +38,4 @@
 
 # Bugs
 
-- [ ] You can add users who are not registered by sending any random username in the users array to "/projects/prjNm/addUsers"
+- [x] You can add users who are not registered by sending any random username in the users array to "/projects/prjNm/addUsers"
