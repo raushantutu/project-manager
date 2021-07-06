@@ -211,6 +211,30 @@ app.get("/projects/:prjNm/toDo/:todoName", function (req, res) {
     }
 })
 
+app.delete("/projects/:prjNm/toDo/:todoName", function (req, res) {
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (err) {
+                throw err
+            } else if (doc) {
+                if (doc.users.includes(req.user.username)) {
+                    doc.todos = doc.todos.filter((value, index, arr) => {
+                        return value.content != req.params.todoName
+                    })
+                    doc.save()
+                    res.send("ToDo deleted successfuly")
+                } else {
+                    res.send("You are not part of the project")
+                }
+            } else {
+                res.send("No such project is available")
+            }
+        })
+    } else {
+        res.send("Please Log In")
+    }
+})
+
 app.get("/projects/:prjNm", function (req, res) {
     const projName = req.params.prjNm
     console.log(projName)

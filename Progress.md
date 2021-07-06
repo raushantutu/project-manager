@@ -1,6 +1,30 @@
 <hr style="border:2px solid gray"></hr>
 
+# **Commit 14**
 
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Can delete todos now
+
+- #### Backend Changes/Edits
+
+1. Added a delete button against every todo that deletes the todo when clicked
+
+### Current errors
+
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [ ] Can't delete todos that have a space at the end (like "this ")[#Bug]()
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 14 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
 
 # **Commit 13**
 
@@ -38,7 +62,7 @@
 
 - #### Backend Changes/Edits
 
-1. When going to ```/isLoggedIn```, if you are logged in you get id and username as res and if you are not logged in then you get 0 as res. 
+1. When going to `/isLoggedIn`, if you are logged in you get id and username as res and if you are not logged in then you get 0 as res.
 
 ### Current errors
 
@@ -60,7 +84,7 @@
 - #### FrontEnd Changes/Edits
 
 1. Fixed a reloading error
-2. Now you can add users too (typing a username that is not in the database still  adds that username to the project users list [#Bug]())
+2. Now you can add users too (typing a username that is not in the database still adds that username to the project users list [#Bug]())
 
 - #### Backend Changes/Edits
 
@@ -104,7 +128,6 @@
 <br/>
 <hr style="border:2px solid gray"></hr>
 <br/>
-
 
 # **Commit 9**
 

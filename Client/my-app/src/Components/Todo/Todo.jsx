@@ -17,6 +17,18 @@ export default function Todo(props) {
       props.dontReload();
     });
   };
+  const handleDelete = (e) => {
+    const str =
+      "http://localhost:4000/projects/" + prjName + "/todo/" + e.target.value;
+    Axios({
+      method: "DELETE",
+      withCredentials: true,
+      url: str,
+    }).then((res) => {
+      console.log(res.data);
+      props.dontReload();
+    });
+  };
   // console.log(props.data);
   const listItems = props.data.map((indItem) => {
     return (
@@ -31,6 +43,7 @@ export default function Todo(props) {
         >
           {indItem.content}
         </button>
+        <button value={indItem.content} onClick={handleDelete}>Delete</button>
       </li>
     );
   });
