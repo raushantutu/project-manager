@@ -13,9 +13,9 @@ export default function Project() {
   const addUser = () => {
     const str = "http://localhost:4000/projects/" + prjName + "/addUsers";
     const data = {
-      users: []
+      users: [],
     };
-    data.users.push(newUser)
+    data.users.push(newUser);
     console.log(data);
     Axios({
       method: "POST",
@@ -23,7 +23,7 @@ export default function Project() {
       data: data,
       url: str,
     }).then((res) => {
-      console.log(res.data,1111);
+      console.log(res.data, 1111);
       // window.location.reload(false);
       projRetrieve();
       setnewUser("");
@@ -48,6 +48,21 @@ export default function Project() {
     });
   };
 
+  const removeUser = (e) => {
+    console.log(e.target.value);
+    const str = "http://localhost:4000/projects/"+prjName+"/deleteUsers"
+    const data = {user:e.target.value}
+    Axios({
+      method: "POST",
+      withCredentials: true,
+      data: data,
+      url: str,
+    }).then((res) => {
+      console.log(res.data, 1111);
+      projRetrieve();
+    });
+  };
+
   const projRetrieve = () => {
     const str = "http://localhost:4000/projects/" + prjName;
     console.log(str);
@@ -58,7 +73,14 @@ export default function Project() {
     }).then((res) => {
       console.log(res.data, "1223123");
       const list = res.data.users.map((user) => {
-        return <li>{user}</li>;
+        return (
+          <li>
+            {user}{" "}
+            <button value={user} onClick={removeUser}>
+              Remove user
+            </button>
+          </li>
+        );
       });
       setUserList(list);
       setTodo(res.data.todos);
