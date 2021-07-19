@@ -109,6 +109,35 @@ app.post("/projects", async function (req, res) {
     }
 })
 
+app.delete("/:username", function (req, res) {
+    if (req.isAuthenticated() && req.user.username === req.params.username) {
+        User.findOneAndDelete({ username: req.params.username }, (err, doc) => {
+            if (err) {
+                throw err
+            } else if (!doc) {
+                res.send("User deleted suxxessfuly!!!")
+            } else {
+                doc.projects.forEach((project) => {
+                    Project.findOne({ projectName: project }, (err, docProj) => {
+                        if (err) {
+                            throw err;
+                        } else if (docProj.users.length === 1 && docProj.users[0] === req.params.username) {
+                            docProj.remove()
+                        } else if (docProj) {
+                            docProj.users = docProj.users.filter((userNme) => {
+                                return req.params.username != userNme
+                            })
+                            docProj.save()
+                        }
+                    })
+                })
+                req.logout()
+                res.send("successfuly deleted the user")
+            }
+        })
+    }
+})
+
 app.get("/projects", function (req, res) {
     User.findOne({ username: req.user.username }, (err, doc) => {
         if (err) {
@@ -154,6 +183,43 @@ app.post("/projects/:prjNm/addUsers", function (req, res) {
         res.send("something")
     } else {
         res.send("Please Log In")
+    }
+})
+
+app.post("/projects/:prjNm/deleteUsers", function (req, res) {
+    var sent = new Boolean(false)
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (err) {
+                throw err
+            } else if (!doc) {
+                res.send("No project exists with this name")
+            } else if (!doc.users.includes(req.user.username)) {
+                res.send("Denied")
+            } else {
+                if (doc.users.length == 1) {
+                    res.send("Can't delete user. Delete the project instead as their is only one user in the project")
+                } else {
+                    doc.users = doc.users.filter(username => {
+                        return username != req.body.user
+                    })
+                    User.findOne({ username: req.body.user }, function (err, docUser) {
+                        if (err) {
+                            throw err
+                        } else if (!docUser) {
+                            res.send("User doesn't exist")
+                        } else {
+                            docUser.projects = docUser.projects.filter((project) => {
+                                return project != req.params.prjNm
+                            })
+                            doc.save()
+                            docUser.save()
+                            res.send("Successfuly deleted user from the project")
+                        }
+                    })
+                }
+            } //NO more res.send() without checking sent
+        })
     }
 })
 
@@ -232,6 +298,40 @@ app.delete("/projects/:prjNm/toDo/:todoName", function (req, res) {
         })
     } else {
         res.send("Please Log In")
+    }
+})
+
+app.delete("/projects/:prjNm", function (req, res) {
+    if (req.isAuthenticated()) {
+        Project.findOne({ projectName: req.params.prjNm }, function (err, doc) {
+            if (doc.users.includes(req.user.username)) {
+                Project.findOneAndDelete({ projectName: req.params.prjNm }, function (err, doc) {
+                    if (err) {
+                        throw err
+                    } else if (!doc) {
+                        res.send("Project doesn't exist")
+                    } else {
+                        doc.users.forEach(username => {
+                            User.findOne({ username: username }, function (err, doc) {
+                                if (err) {
+                                    throw err;
+                                } else if (!doc) {
+                                    console.log("User doesnt exist")
+                                } else {
+                                    doc.projects = doc.projects.filter((proj) => {
+                                        console.log(req.params.prjNm === proj)
+                                        return req.params.prjNm != proj
+                                    })
+                                    doc.save();
+                                }
+                            })
+                        });
+                        res.send("Project has been deleted successfuly")
+                    }
+                })
+            }
+        })
+
     }
 })
 

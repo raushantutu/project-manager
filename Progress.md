@@ -1,5 +1,62 @@
 <hr style="border:2px solid gray"></hr>
 
+# **Commit 16**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. None Whatsoever
+
+- #### Backend Changes/Edits
+
+1. A user can delete his account now
+2. Users can be removed from a project now
+
+### Current errors
+
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [ ] You can add empty projects which cant be accessed or deleted [#Bug]()
+- [ ] When you create a new user, error occurs because their projects list is empty [#Bug]() [#FrontEnd]()
+- [ ] Can't delete todos that have a space at the end (like "this ")[#Bug]()
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 16 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
+# **Commit 15**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Added buttons against every project. The button deletes the projects from every users project list and removes project itself
+
+- #### Backend Changes/Edits
+
+1. Can delete Projects now
+
+### Current errors
+
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [ ] You can add empty projects which cant be accessed or deleted [#Bug]()
+- [ ] When you create a new user, error occurs because their projects list is empty [#Bug]() [#FrontEnd]()
+- [ ] Can't delete todos that have a space at the end (like "this ")[#Bug]()
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 15 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
 # **Commit 14**
 
 ### Changes/Edits
@@ -15,6 +72,8 @@
 ### Current errors
 
 - [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [ ] You can add empty projects which cant be accessed or deleted [#Bug]()
+- [ ] When you create a new user, error occurs because their projects list is empty [#Bug]() [#FrontEnd]()
 - [ ] Can't delete todos that have a space at the end (like "this ")[#Bug]()
 - [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
 - [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
@@ -202,6 +261,12 @@
 - [ ] Invalid users are also being added to projects collection
 
 ## Commit 7 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
+# **Added FRONTEND**
 
 <br/>
 <hr style="border:2px solid gray"></hr>

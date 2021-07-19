@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-export default function Projects() {
+export default function Projects(props) {
   const [projectList, setProjectList] = useState([23, 34]);
   const [times, setTimes] = useState(0);
   const [newProjectName, setNewProjectName] = useState("");
@@ -22,6 +22,18 @@ export default function Projects() {
       }
     });
   };
+  const handleDeleteProject = (e)=>{
+    const str="http://localhost:4000/projects/"+e.target.value
+    console.log(str);
+    Axios({
+      method: "DELETE",
+      withCredentials: true,
+      url: str,
+    }).then((res)=>{
+      console.log(res.data)
+      getProjList();
+    })
+  }
   const getProjList = async () => {
     Axios({
       method: "GET",
@@ -35,7 +47,8 @@ export default function Projects() {
           const str = "/project/" + projectName;
           return (
             <li>
-              <Link to={str}>{projectName}</Link>
+              <Link to={str}>{projectName} </Link>
+              <button value={projectName} onClick={handleDeleteProject}>Delete</button>
             </li>
           );
         });

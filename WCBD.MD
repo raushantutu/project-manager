@@ -12,15 +12,17 @@
 - [x] Add ToDos to the project
 - [x] Mark ToDos as completed/not-completed
 - [x] Remove ToDos from the project
-- [ ] Remove a project
-- [ ] Remove users from the project
+- [x] Remove a project
+- [x] Remove users from the project
+- [x] Delete user account
 
 ### FRONTEND
 
 - [x] Add a sign up page [#Important]()
-- [ ] Remove todo button
-- [ ] Remove Project button
+- [x] Remove todo button
+- [x] Remove Project button
 - [ ] Remove User Button
+- [ ] Delete account option
 - [x] Login/Logout/Register strip on top
 - [x] When logged-in, show all projects
 - [x] Add project button
@@ -41,8 +43,3 @@
 - [ ] Bug tracking
 - [ ] Source Code Link (GitHub probably)
 - [ ] Section with dates regarding the project
-
-# Bugs
-
-- [x] You can add users who are not registered by sending any random username in the users array to "/projects/prjNm/addUsers"
-- [ ] Can't delete todos that have an space at the end (like "this ")
