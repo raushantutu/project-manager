@@ -1,5 +1,33 @@
 <hr style="border:2px solid gray"></hr>
 
+# **Commit 17**
+
+### Changes/Edits
+
+- #### FrontEnd Changes/Edits
+
+1. Minor
+
+- #### Backend Changes/Edits
+
+1. Minor
+
+### Current errors
+
+- [ ] When adding a user, the server sends "something". Fix with appropriate code [#Bug]()
+- [ ] You can add empty projects which cant be accessed or deleted [#Bug]()
+- [ ] When you create a new user, error occurs because their projects list is empty [#Bug]() [#FrontEnd]()
+- [ ] Can't delete todos that have a space at the end (like "this ")[#Bug]()
+- [x] Invalid users are also being added to projects collection [#Important]() [#Bug]()
+- [x] When opening a project specific page, the users list of the project is not properly being shown (all are clubbed together) [#Bug]()
+- [x] When marking a todo item as completed/not-completed, the page is reloading to show the changes.(Fixed. fixed for project add and user add) [#Bug]()
+
+## Commit 17 end
+
+<br/>
+<hr style="border:2px solid gray"></hr>
+<br/>
+
 # **Commit 16**
 
 ### Changes/Edits

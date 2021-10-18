@@ -21,7 +21,7 @@
 - [x] Add a sign up page [#Important]()
 - [x] Remove todo button
 - [x] Remove Project button
-- [ ] Remove User Button
+- [x] Remove User Button
 - [ ] Delete account option
 - [x] Login/Logout/Register strip on top
 - [x] When logged-in, show all projects
@@ -36,6 +36,7 @@
 ### MIGHT ADD LATER ON
 
 - [ ] Set and show priorities of project (Can use tag)
+- [ ] Admin for every project
 - [ ] Mark the Current project with a tag
 - [ ] Completion tag for every project
 - [ ] Description of the project
