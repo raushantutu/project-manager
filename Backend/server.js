@@ -1,5 +1,6 @@
 /* #region  Imports */
 const express = require("express");
+var socket=require('socket.io');
 const mongoose = require("mongoose");
 const cors = require("cors");
 const passport = require("passport");
@@ -22,6 +23,22 @@ mongoose.connect(
     console.log("Mongoose Is Connected");
   }
 );
+//-----------Start Server-------------------------------------------------
+var server = app.listen(4000, function () {
+  console.log("Server started on port 3000.");
+});
+
+//------------socket setup------------------------------------------------
+var io = socket(server);
+
+io.on('connection',function(socket){
+  console.log('made socket connection',socket.id)
+  temp="fgd"
+  socket.on(temp,function(data){
+    console.log(data);
+    io.sockets.emit(temp,data)
+  })
+});
 
 //-----------Middleware---------------------------------------------------
 app.use(express.json());
@@ -387,7 +404,3 @@ app.get("/isLoggedIn", function (req, res) {
   }
 });
 
-//Start Server
-app.listen(4000, function () {
-  console.log("Server started on port 3000.");
-});
